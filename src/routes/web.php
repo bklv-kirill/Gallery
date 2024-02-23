@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::name("images.")->group(function () {
+    Route::get("/", \App\Http\Controllers\Images\IndexController::class)->name("index");
+    Route::post("/", \App\Http\Controllers\Images\StoreController::class)->name("store");
+    Route::delete("/{image}", \App\Http\Controllers\Images\DeleteController::class)->name("delete");
 });
